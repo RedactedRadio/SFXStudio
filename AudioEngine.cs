@@ -6,16 +6,21 @@ namespace SFXStudio.Views;
 public class AudioEngine
 {
     public const int SampleRate = 44100;
+    private static readonly Random _noiseRand = new();
 
     public static float[] GenerateAdvancedBuffer(
         double baseFreq, double modFreq, double modDepth, double duration, 
-        string waveType, bool useDelay, bool useFlanger)
+        string waveType, bool useDelay, bool useFlanger, double noiseAmount)
     {
         int totalSamples = (int)(SampleRate * duration);
         float[] buffer = new float[totalSamples];
         
         double carrierPhase = 0.0;
         double modulatorPhase = 0.0;
+
+        // Low-pass filter variables for heavy explosion rumbles
+        float filterLastSample = 0f;
+        float filterCutoff = 0.15f; // Lower numbers make it bassier/heavier
 
         // 1. Core Synthesis Generation Loop
         for (int i = 0; i < totalSamples; i++)
@@ -31,7 +36,7 @@ public class AudioEngine
             carrierPhase += (2 * Math.PI * currentFrequency) / SampleRate;
             if (carrierPhase > 2 * Math.PI) carrierPhase -= 2 * Math.PI;
 
-            // Mathematical Waveform Selection
+            // Generate Oscillator Wave Form
             double rawSample = waveType switch
             {
                 "Square" => (Math.Sin(carrierPhase) >= 0) ? 1.0 : -1.0,
@@ -40,37 +45,44 @@ public class AudioEngine
                 _ => Math.Sin(carrierPhase) // Default: Sine
             };
 
-            // Amplitude Envelope: Smooth fade-out curve
+            // --- WHITE NOISE & EXPLOSION GENERATOR ---
+            // Generate a random value between -1.0 and 1.0
+            double rawNoise = (_noiseRand.NextDouble() * 2.0) - 1.0;
+
+            // Run the raw noise through a Low-Pass Filter to make it a heavy rumble
+            float filteredNoise = filterLastSample + (filterCutoff * ((float)rawNoise - filterLastSample));
+            filterLastSample = filteredNoise;
+
+            // Mix the core wave shape with the filtered explosion noise
+            double mixedSample = (rawSample * (1.0 - noiseAmount)) + (filteredNoise * noiseAmount);
+
+            // Amplitude Envelope: Smooth exponential fade-out curve
             double envelope = Math.Exp(-3.0 * progress);
-            buffer[i] = (float)(rawSample * envelope * 0.4);
+            buffer[i] = (float)(mixedSample * envelope * 0.4);
         }
 
-        // 2. DSP FX: Sci-Fi Flanger / Chorus Sweep
+        // 2. DSP FX: Sci-Fi Flanger
         if (useFlanger)
         {
             float[] flangerBuffer = new float[totalSamples];
             double flangerPhase = 0.0;
-
             for (int i = 0; i < totalSamples; i++)
             {
-                flangerPhase += (2 * Math.PI * 2.0) / SampleRate; // 2Hz sweep speed
-                double dynamicDelay = 0.003 + (Math.Sin(flangerPhase) + 1.0) * 0.002; // 3ms to 7ms delay shift
+                flangerPhase += (2 * Math.PI * 2.0) / SampleRate;
+                double dynamicDelay = 0.003 + (Math.Sin(flangerPhase) + 1.0) * 0.002;
                 int delaySamples = (int)(dynamicDelay * SampleRate);
-
                 int sourceIndex = i - delaySamples;
                 float delayedSample = (sourceIndex >= 0) ? buffer[sourceIndex] : 0f;
-
                 flangerBuffer[i] = (buffer[i] * 0.6f) + (delayedSample * 0.4f);
             }
             buffer = flangerBuffer;
         }
 
-        // 3. DSP FX: Space Delay (Feedback Echo Chambers)
+        // 3. DSP FX: Space Echo Delay
         if (useDelay)
         {
-            int delaySamples = (int)(0.25 * SampleRate); // 250ms spacing echo
-            float feedback = 0.4f; // 40% echo volume volume reduction
-
+            int delaySamples = (int)(0.25 * SampleRate);
+            float feedback = 0.4f;
             for (int i = delaySamples; i < totalSamples; i++)
             {
                 buffer[i] += buffer[i - delaySamples] * feedback;

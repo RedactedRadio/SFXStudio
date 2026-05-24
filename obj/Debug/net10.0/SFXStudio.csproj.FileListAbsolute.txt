@@ -92,3 +92,4 @@
 /home/blackflag/codeBase/SFXStudio/obj/Debug/net10.0/SFXStudio.csproj.Up2Date
 /home/blackflag/codeBase/SFXStudio/obj/Debug/net10.0/SFXStudio.genruntimeconfig.cache
 /home/blackflag/codeBase/SFXStudio/obj/Debug/net10.0/ref/SFXStudio.dll
+/home/blackflag/codeBase/SFXStudio/obj/Debug/net10.0/SFXStudio.sourcelink.json

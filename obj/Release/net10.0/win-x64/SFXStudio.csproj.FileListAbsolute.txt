@@ -238,3 +238,4 @@
 /home/blackflag/codeBase/SFXStudio/obj/Release/net10.0/win-x64/SFXStudio.pdb
 /home/blackflag/codeBase/SFXStudio/obj/Release/net10.0/win-x64/SFXStudio.genruntimeconfig.cache
 /home/blackflag/codeBase/SFXStudio/obj/Release/net10.0/win-x64/ref/SFXStudio.dll
+/home/blackflag/codeBase/SFXStudio/obj/Release/net10.0/win-x64/SFXStudio.sourcelink.json
