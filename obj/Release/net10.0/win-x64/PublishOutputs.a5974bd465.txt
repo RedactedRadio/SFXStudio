@@ -1,0 +1,2 @@
+/home/blackflag/codeBase/SFXStudio/bin/Release/net10.0/win-x64/publish/SFXStudio.pdb
+/home/blackflag/codeBase/SFXStudio/bin/Release/net10.0/win-x64/publish/SFXStudio.exe

@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="400"
+        x:Class="SFXStudio.Views.MainWindow"
+        Title="Sound FX Studio" Width="600" Height="900">
+       
+    <Grid RowDefinitions="Auto, *, Auto" Margin="25">
+        <!-- High Tech Header Display -->
+        <Border Grid.Row="0" Background="#1A202C" CornerRadius="4" Padding="15" Margin="0,0,0,15" BorderBrush="#FF7E00" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="SFX Synthesis Engine" FontSize="18" FontWeight="Bold" Foreground="#FF7E00" LetterSpacing="2"/>
+                <TextBlock Text="PRESS [SPACEBAR] TO PREVIEW SFX" FontSize="10" Foreground="#FF7E00" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Parameter Controls Panel -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Spacing="15">
+                <!-- Preset Matrix Grid Selection -->
+                <TextBlock Text="SFX Presets" FontSize="11" FontWeight="Bold" Foreground="#FF7E00"/>
+                <UniformGrid Columns="4">
+                    <Button Content="LASER" Click="LoadLaserPreset" Background="#2D3748" Foreground="#FF7E00" Margin="4"/>
+                    <Button Content="DRONE" Click="LoadDronePreset" Background="#2D3748" Foreground="#FF7E00" Margin="4"/>
+                    <Button Content="DATA" Click="LoadDataPreset" Background="#2D3748" Foreground="#FF7E00" Margin="4"/>
+                    <Button Content="⚡ RANDOM" Click="TriggerRandomizer" Background="#1f1d1f" Foreground="#FF7E00" FontWeight="Bold" Margin="4"/>
+                </UniformGrid>
+
+                <Separator Background="#2D3748" Height="1"/>
+
+                <!-- Waveform Select Profile Configuration -->
+                <TextBlock Text="OSCILLATOR WAVE PROFILE" FontSize="11" FontWeight="Bold" Foreground="#FF7E00"/>
+                <ComboBox Name="WaveTypeCombo" SelectedIndex="0" HorizontalAlignment="Stretch" Background="#1A202C" Foreground="White">
+                    <ComboBoxItem Content="Sine (Smooth Ambient)"/>
+                    <ComboBoxItem Content="Square (8-Bit Retro)"/>
+                    <ComboBoxItem Content="Sawtooth (Aggressive Buzz)"/>
+                    <ComboBoxItem Content="Triangle (Flute Hum)"/>
+                </ComboBox>
+
+                <!-- Signal Vector Variables Matrix -->
+                <TextBlock Text="SIGNAL GENERATION MODIFIERS" FontSize="11" FontWeight="Bold" Foreground="#FF7E00"/>
+                <Border Background="#1A202C" Padding="12" CornerRadius="4">
+                    <StackPanel>
+                        <TextBlock Text="BASE FREQUENCY (HZ)"/>
+                        <Slider Name="BaseFreqSlider" Minimum="40" Maximum="2000" Value="220" Foreground="#FF7E00"/>
+                        
+                        <TextBlock Text="MODULATION SPEED (HZ)" Margin="0,8,0,0"/>
+                        <Slider Name="ModFreqSlider" Minimum="0" Maximum="120" Value="5" Foreground="#FF7E00"/>
+                        
+                        <TextBlock Text="MODULATION OSCILLATION DEPTH" Margin="0,8,0,0"/>
+                        <Slider Name="ModDepthSlider" Minimum="0" Maximum="600" Value="50" Foreground="#FF7E00"/>
+                        
+                        <TextBlock Text="TIMELINE DURATION (SECONDS)" Margin="0,8,0,0"/>
+                        <Slider Name="DurationSlider" Minimum="0.05" Maximum="4.0" Value="1.0" Foreground="#FF7E00"/>
+                    </StackPanel>
+                </Border>
+
+                
+                <TextBlock Text="DSP FX MODULE LINKS" FontSize="11" FontWeight="Bold" Foreground="#FF7E00"/>
+                <StackPanel Orientation="Horizontal" Spacing="30" HorizontalAlignment="Center">
+                    <CheckBox Name="DelayCheck" Content="ECHO / DELAY" Foreground="#FF7E00"/>
+                    <CheckBox Name="FlangerCheck" Content="FLANGER" Foreground="#FF7E00"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        
+        <Grid Grid.Row="2" ColumnDefinitions="*, *">
+            <Button Grid.Column="0" Content="PREVIEW SIGNAL" Click="OnPlayPreviewClick" Background="#FF7E00" Foreground="#0B0E14" FontWeight="Bold" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Height="42" Margin="0,0,5,0"/>
+            <Button Grid.Column="1" Content="EXPORT .WAV (.WAV)" Click="OnExportWavClick" Background="#2D3748" BorderBrush="#FF7E00" BorderThickness="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Height="42" Margin="5,0,0,0"/>
+        </Grid>
+    </Grid>
+</Window>
