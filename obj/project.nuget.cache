@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "61SuQFNUI3I=",
+  "dgSpecHash": "UaNQYleJpPg=",
   "success": true,
   "projectFilePath": "/home/blackflag/codeBase/SFXStudio/SFXStudio.csproj",
   "expectedPackageFiles": [
@@ -29,7 +29,6 @@
     "/home/blackflag/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "/home/blackflag/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "/home/blackflag/.nuget/packages/microsoft.io.recyclablememorystream/3.0.1/microsoft.io.recyclablememorystream.3.0.1.nupkg.sha512",
-    "/home/blackflag/.nuget/packages/microsoft.net.illink.tasks/10.0.8/microsoft.net.illink.tasks.10.0.8.nupkg.sha512",
     "/home/blackflag/.nuget/packages/pipewiresharp/0.1.0/pipewiresharp.0.1.0.nupkg.sha512",
     "/home/blackflag/.nuget/packages/skiasharp/3.119.4-preview.1.1/skiasharp.3.119.4-preview.1.1.nupkg.sha512",
     "/home/blackflag/.nuget/packages/skiasharp.nativeassets.linux/3.119.4-preview.1.1/skiasharp.nativeassets.linux.3.119.4-preview.1.1.nupkg.sha512",
@@ -37,10 +36,7 @@
     "/home/blackflag/.nuget/packages/skiasharp.nativeassets.webassembly/3.119.4-preview.1.1/skiasharp.nativeassets.webassembly.3.119.4-preview.1.1.nupkg.sha512",
     "/home/blackflag/.nuget/packages/skiasharp.nativeassets.win32/3.119.4-preview.1.1/skiasharp.nativeassets.win32.3.119.4-preview.1.1.nupkg.sha512",
     "/home/blackflag/.nuget/packages/tinyaudio/0.5.0/tinyaudio.0.5.0.nupkg.sha512",
-    "/home/blackflag/.nuget/packages/tmds.dbus.protocol/0.92.0/tmds.dbus.protocol.0.92.0.nupkg.sha512",
-    "/home/blackflag/.nuget/packages/microsoft.netcore.app.runtime.osx-x64/10.0.8/microsoft.netcore.app.runtime.osx-x64.10.0.8.nupkg.sha512",
-    "/home/blackflag/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-x64/10.0.8/microsoft.aspnetcore.app.runtime.osx-x64.10.0.8.nupkg.sha512",
-    "/home/blackflag/.nuget/packages/microsoft.netcore.app.host.osx-x64/10.0.8/microsoft.netcore.app.host.osx-x64.10.0.8.nupkg.sha512"
+    "/home/blackflag/.nuget/packages/tmds.dbus.protocol/0.92.0/tmds.dbus.protocol.0.92.0.nupkg.sha512"
   ],
   "logs": []
 }

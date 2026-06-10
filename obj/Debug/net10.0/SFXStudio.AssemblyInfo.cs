@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SFXStudio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a59e7e97e3e66e8809bb536be59ea65363c08a37")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c1bf991f51186ac312b3670326a6b6d1127533d")]
 [assembly: System.Reflection.AssemblyProductAttribute("SFXStudio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SFXStudio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

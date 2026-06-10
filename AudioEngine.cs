@@ -45,7 +45,7 @@ public class AudioEngine
                 _ => Math.Sin(carrierPhase) // Default: Sine
             };
 
-            // --- WHITE NOISE & EXPLOSION GENERATOR ---
+            // --- WHITE NOISE GENERATOR ---
             // Generate a random value between -1.0 and 1.0
             double rawNoise = (_noiseRand.NextDouble() * 2.0) - 1.0;
 
